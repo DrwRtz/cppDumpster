@@ -1,35 +1,54 @@
 #include <iostream>
-#include <string>
 
-void buildValues(std::string ahoy[], int upTo)
-{
-    int index = 0;
+/*class Cube {
+    public:
+        Cube(double length);
 
-    for (int i = 1; i < upTo + 1; i++)
-    {
-        for (int j = 1; j < 13; j++)
-        {
-            ahoy[index] = std::to_string(i).append(" x ").append(std::to_string(j));
-            index++;        
-        }
+        double getLength() const;
+        void setLength(double length);
+
+    private:
+        double length_;
+};
+
+Cube::Cube(double length) {
+    length_ = length;
+}
+
+double Cube::getLength() const {
+    return length_;
+}
+
+void Cube::setLength(double length) {
+    length_ = length;
+}
+
+namespace wry {
+    template <typename T>
+    T max(T a, T b) {
+        if (a > b) { return a; }
+        return b;
     }
 }
 
-int main()
+int main() 
 {
-    // Presummably a starting point
-    int upToThis;
-    std::cin >> upToThis;
-    int size = upToThis * 12;
-    std::string chart[size];
+    std::cout << "max(3, 5): " << wry::max(3, 5) << std::endl;
+    std::cout << "max('a', 'd'): " << wry::max('a', 'd') << std::endl;
+    std::cout << "max(\"Hello\", \"World\"): " << wry::max(std::string("Hello"), std::string("World")) << std::endl;
 
-    buildValues(chart, upToThis);
+    //std::cout << "max( Cube(3), Cube(6) )" << max( Cube(3), Cube(6) ) << std::endl;
+}*/
+class Just_a_double {
+public:
+    double a;
 
-    for (std::string el : chart)
-    {
-        std::cout << el << "\n";
-    }
+    Just_a_double(double x) : a(x) { }
+    Just_a_double() : Just_a_double(0) { }
+};
 
-    std::cout << rand();
-    
+int main() {
+    Just_a_double sample(1);
+    std::cout << sample.a;
+    return 0;
 }
