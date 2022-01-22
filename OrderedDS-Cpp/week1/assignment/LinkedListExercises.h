@@ -86,15 +86,38 @@ void LinkedList<T>::insertOrdered(const T& newData) {
   Node* newNode = new Node(newData);
   Node* temp = head_;
 
-  while (temp->next) {
-    if (temp->data > newData) {
-      temp = temp.prev;
+  if (!head_) {
+    head_ = newNode;
+    tail_ = newNode;
+  } else {
+    while (temp) {
+      if (temp->data > newData) {
+        if (!temp->prev) {
+          newNode->next = temp;
+          temp->prev = newNode;
+          head_ = newNode;
+          break;
+        } else {
+          newNode->next = temp;
+          temp = temp->prev;
+          temp->next = newNode;
+          newNode->prev = temp;
+          temp = newNode->next;
+          temp->prev = newNode;
+          break;
+        }
+      } else if (!temp->next) {
+        newNode->prev = temp;
+        temp->next = newNode;
+        tail_ = newNode;
+        break;
+      }
+
+      temp = temp->next;
     }
-
-
-    temp = temp->next;
   }
-
+  
+  size_++;
   // -----------------------------------------------------------
   // Please implement this function according to the description
   // above and in the instructions PDF.
