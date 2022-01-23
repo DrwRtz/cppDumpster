@@ -70,6 +70,8 @@
         "xutility": "cpp",
         "deque": "cpp",
         "queue": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "random": "cpp",
+        "variant": "cpp"
     }
 }

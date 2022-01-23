@@ -260,6 +260,59 @@ LinkedList<T> LinkedList<T>::merge(const LinkedList<T>& other) const {
 
   // -----------------------------------------------------------
   // TODO: Your code here!
+  while (left.size() != 0 || right.size() != 0) {
+    if (left.size() == 0) {
+      if (merged.size() == 0) {
+          merged.pushBack(right.front());
+          right.popFront();
+      } else {
+        if (merged.back() != right.front()) {
+          merged.pushBack(right.front());
+          right.popFront();
+        } else {
+          right.popFront();
+        }
+      }
+    } else if (right.size() == 0) {
+      if (merged.size() == 0) {
+          merged.pushBack(left.front());
+          left.popFront();
+      } else {
+        if (merged.back() != left.front()) {
+          merged.pushBack(left.front());
+          left.popFront();
+        } else {
+          left.popFront();
+        }
+      }
+    } else if (left.front() < right.front()) {
+      if (merged.size() == 0) {
+          merged.pushBack(left.front());
+          left.popFront();
+      } else {
+        if (merged.back() != left.front()) {
+          merged.pushBack(left.front());
+          left.popFront();
+        } else {
+          left.popFront();
+        }
+      }
+    } else {
+      if (merged.size() == 0) {
+          merged.pushBack(right.front());
+          right.popFront();
+      } else {
+        if (merged.back() != right.front()) {
+          merged.pushBack(right.front());
+          right.popFront();
+        } else {
+          right.popBack();
+        }
+      }
+    }
+  }
+
+
   // -----------------------------------------------------------
   // Please implement this function according to the description
   // above and in the instructions PDF.
