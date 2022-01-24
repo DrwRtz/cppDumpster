@@ -343,4 +343,3 @@ LinkedList<T> LinkedList<T>::merge(const LinkedList<T>& other) const {
   // and an int.)
   return merged;
 }
-
