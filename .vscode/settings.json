@@ -72,6 +72,12 @@
         "queue": "cpp",
         "stack": "cpp",
         "random": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "condition_variable": "cpp",
+        "future": "cpp",
+        "mutex": "cpp",
+        "numeric": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     }
 }
