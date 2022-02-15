@@ -2,9 +2,7 @@
 
 int main()
 {
-    std::string temp = "AEIOU";
-
-    temp[1] = temp[1] + 1;
+    int temp = 34 / 5;
 
     std::cout << temp;
 }
