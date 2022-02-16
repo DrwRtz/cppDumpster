@@ -1,13 +1,19 @@
 #include <iostream>
-#include <vector>
+#include <set>
 
-int getCurrentH_index(std::vector<int> &k, int &size)
+void getCurrentH_index(std::multiset<int, std::greater<>> &k)
 {
-    int score;
+    int score, index = 1;
 
-    
+    for (int el : k)
+    {
+        if (el >= index)
+            score = index;
+        
+        index++;
+    }
 
-    return score;
+    std::cout << score << " ";
 }
 
 int main()
@@ -17,21 +23,19 @@ int main()
 
     for (int i = 0; i < testCases; i++)
     {
-        std::cout << "Case #" << i + 1 << ": ";
-
-        int number, H_index;
+        int number;
         std::cin >> number;
 
-        std::vector<int> keeper;
-
+        std::multiset<int, std::greater<>> keeper;
+        std::cout << "Case #" << i + 1 << ": ";
+        
         for (int j = 0; j < number; j++)
         {
             int temp;
             std::cin >> temp;
-            keeper.push_back(temp);
+            keeper.insert(temp);
 
-            H_index = getCurrentH_index(keeper, number);
-            std::cout << H_index << " ";
+            getCurrentH_index(keeper);
         }
         
         std::cout << '\n';
