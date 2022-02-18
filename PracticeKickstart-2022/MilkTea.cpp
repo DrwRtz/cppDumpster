@@ -74,17 +74,17 @@ int main()
 
         for (int j = 0; j < bannedOnes.size(); j++)
         {
-            std::remove(chances.begin(), chances.end(), bannedOnes[j]);
+            chances.erase(std::remove(chances.begin(), chances.end(), bannedOnes[j]), chances.end());
         }
 
-        // IT SEEMS "1111" NOT DELETED CORRECTLY 
-        std::cout << "/////////";
+        /* IT SEEMS "1111" NOT DELETED CORRECTLY 
+        std::cout << "/////////" << "\n";
         for (std::string x: chances)
         {
             std::cout << x << "\n";
         }
 
-        return 0;
+        return 0;*/
 
         std::vector<int> answers;
         for (int j = 0; j < chances.size(); j++)
