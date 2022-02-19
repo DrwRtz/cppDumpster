@@ -2,7 +2,13 @@
 
 int main()
 {
-    int temp = 34 / 5;
+    std::string temp;
 
-    std::cout << temp;
+    for (size_t i = 0; i < 3; i++)
+    {
+        /* code */
+        std::cin >> temp;
+        std::cout << temp << "\n";
+    }
+    
 }
