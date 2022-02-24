@@ -1,11 +1,11 @@
 #include <iostream>
 #include <set>
 
-void getCurrentH_index(std::multiset<int, std::greater<>> &k)
+void getCurrentH_index(std::multiset<long long, std::greater<>> &k)
 {
-    int score, index = 1;
+    long long score, index = 1;
 
-    for (int el : k)
+    for (long long el : k)
     {
         if (el >= index)
             score = index;
@@ -23,15 +23,15 @@ int main()
 
     for (int i = 0; i < testCases; i++)
     {
-        int number;
+        long long number;
         std::cin >> number;
 
-        std::multiset<int, std::greater<>> keeper;
+        std::multiset<long long, std::greater<>> keeper;
         std::cout << "Case #" << i + 1 << ": ";
         
-        for (int j = 0; j < number; j++)
+        for (long long j = 0; j < number; j++)
         {
-            int temp;
+            long long temp;
             std::cin >> temp;
             keeper.insert(temp);
 
