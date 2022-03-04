@@ -5,7 +5,7 @@ int main()
     for (int i = 1; i <= 10; i++)
     {
         std::cout << "## TABLA DEL " << i << " ##" << std::endl;
-        for (int j = 1; j <= 10; j++)
+        for (int j = 1; j <= 12; j++)
         {
             int userAttempt;
             int expectedInput = i * j;
