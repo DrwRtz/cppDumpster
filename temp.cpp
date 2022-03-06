@@ -1,17 +1,14 @@
 #include <iostream>
-#include <string>
-#include <vector>
+#include <random>
 
 int main()
 {
-    std::vector<std::pair<std::string, int>> test;
+    std::random_device seed;
+    std::mt19937 mt(seed());
+    std::uniform_int_distribution<int> dist(1, 10);
 
-    /*std::pair<std::string, int> pr;
-    pr = {"010101", 5};
-
-    std::cout << pr.first << "\n" << pr.second;
-    */
-    test.push_back({"101010", 5});
-    
-    std::cout << test[0].second;
+    for (int i = 0; i < 5; i++)
+    {
+        std::cout << dist(mt) << std::endl;
+    }
 }
