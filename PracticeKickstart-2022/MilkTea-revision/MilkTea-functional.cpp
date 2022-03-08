@@ -44,7 +44,7 @@ int main()
     {
         int teaOrders_amount, forbiddenOrders_amount, digits_amount;
         std::cin >> teaOrders_amount >> forbiddenOrders_amount >>
-         digits_amount;
+            digits_amount;
 
         std::vector<std::string> teaOrders(teaOrders_amount);
         for (int j = 0; j < teaOrders_amount; j++)
@@ -65,15 +65,25 @@ int main()
         for (int j = 1; j < digits_amount; j++)
         {
             std::vector<std::pair<int, std::string>> temp(options.size() * 2);
+            int it = 0;
+            
             for (std::pair<int, std::string> el: options)
             {
                 std::string zero = el.second.append("0");
-                temp.push_back({score(zero, teaOrders), zero});
+                temp[it] = {score(zero, teaOrders), zero};
+
+                it++;
 
                 std::string one = el.second.append("1");
-                temp.push_back({score(zero, teaOrders), one});
+                temp[it] = {score(zero, teaOrders), one};
+                it++;
             }
 
+            /*for (std::pair<int, std::string> el: temp)
+            {
+                std::cout << "Iteration j :" << j << " Score: " << el.first << " Binary:" <<
+                    el.second << "\n";
+            }*/
             
             if (temp.size() > forbiddenOrders_amount + 1)
             {
@@ -91,6 +101,14 @@ int main()
             }
         }
 
+        //std::cout << "///// Result: /////" << "\n";
+        for (std::pair<int, std::string> el: options)
+        {
+            std::cout << "Score: " << el.first << " Binary: " << 
+                el.second << std::endl;
+        }
+    
+        
         std::cout << "Case #" << i << ": " 
             << getBest(options, forbiddenOrders) << "\n";
     }
