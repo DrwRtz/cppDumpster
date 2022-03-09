@@ -7,14 +7,15 @@ int score(std::string &s, std::vector<std::string> &orders)
 {
     int complaints = 0;
 
-    for (std::string el: orders)
+    for (std::string bin: orders)
     {
         for (int i = 0; i < s.length(); i++)
         {
-            if (s[i] != el[i])
+            if (s.at(i) != bin.at(i))
             {
                 complaints++;
             }
+
         }
     }
 
@@ -28,6 +29,7 @@ int getBest(std::vector<std::pair<int, std::string>> &opt, std::vector<std::stri
         if (std::find(forbidden.begin(), forbidden.end(), el.second) 
             == forbidden.end())
         {
+        /*     std::cout << "\n Binary String: " << el.second << " Length: " << el.second.length() << "\n"; */
             return el.first;
         }
     }
@@ -66,25 +68,29 @@ int main()
         {
             std::vector<std::pair<int, std::string>> temp(options.size() * 2);
             int it = 0;
+
+            /* for (std::pair<int, std::string> eli: temp)
+            {
+                std::cout << "Iteration j :" << j << " Score: " << eli.first << " Binary:" <<
+                    eli.second << "\n";
+            } */
             
             for (std::pair<int, std::string> el: options)
             {
-                std::string zero = el.second.append("0");
+                std::string zero = el.second + "0";
+                /* std::cout << "Zero: " << zero << std::endl; */
                 temp[it] = {score(zero, teaOrders), zero};
 
                 it++;
 
-                std::string one = el.second.append("1");
-                temp[it] = {score(zero, teaOrders), one};
+                std::string one = el.second + "1";
+                /* std::cout << "One: " << one << std::endl; */
+                temp[it] = {score(one, teaOrders), one};
                 it++;
             }
 
-            /*for (std::pair<int, std::string> el: temp)
-            {
-                std::cout << "Iteration j :" << j << " Score: " << el.first << " Binary:" <<
-                    el.second << "\n";
-            }*/
             
+
             if (temp.size() > forbiddenOrders_amount + 1)
             {
                 std::sort(temp.begin(), temp.end());
@@ -98,15 +104,17 @@ int main()
             else 
             {
                 options = temp;
+                /* std::cout << "OPTIONS SIZE: " << options.size() << std::endl;
+                std::cout << "TEMP SIZE: " << temp.size() << std::endl; */
             }
         }
 
         //std::cout << "///// Result: /////" << "\n";
-        for (std::pair<int, std::string> el: options)
+        /* for (std::pair<int, std::string> el: options)
         {
             std::cout << "Score: " << el.first << " Binary: " << 
                 el.second << std::endl;
-        }
+        } */
     
         
         std::cout << "Case #" << i << ": " 
