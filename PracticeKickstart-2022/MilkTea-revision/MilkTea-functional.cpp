@@ -29,7 +29,7 @@ int getBest(std::vector<std::pair<int, std::string>> &opt, std::vector<std::stri
         if (std::find(forbidden.begin(), forbidden.end(), el.second) 
             == forbidden.end())
         {
-        /*     std::cout << "\n Binary String: " << el.second << " Length: " << el.second.length() << "\n"; */
+            /* std::cout << "\n Binary String: " << el.second << " Length: " << el.second.length() << "\n"; */
             return el.first;
         }
     }
@@ -61,10 +61,10 @@ int main()
         }
 
         std::vector<std::pair<int, std::string>> options;
-        options.push_back({0, "0"});
-        options.push_back({0, "1"});
+        options.push_back({0, ""});
+        //options.push_back({0, "1"});
 
-        for (int j = 1; j < digits_amount; j++)
+        for (int j = 0; j < digits_amount; j++)
         {
             std::vector<std::pair<int, std::string>> temp(options.size() * 2);
             int it = 0;
@@ -78,34 +78,22 @@ int main()
             for (std::pair<int, std::string> el: options)
             {
                 std::string zero = el.second + "0";
-                /* std::cout << "Zero: " << zero << std::endl; */
                 temp[it] = {score(zero, teaOrders), zero};
 
                 it++;
 
                 std::string one = el.second + "1";
-                /* std::cout << "One: " << one << std::endl; */
                 temp[it] = {score(one, teaOrders), one};
                 it++;
             }
 
-            
+            std::sort(temp.begin(), temp.end());
 
-            if (temp.size() > forbiddenOrders_amount + 1)
-            {
-                std::sort(temp.begin(), temp.end());
-                options.clear();
+            options.clear();
 
-                for (int k = 0; k <= forbiddenOrders_amount; k++)
-                {
-                    options.push_back(temp[k]);
-                }
-            }
-            else 
+            for (int k = 0; k <= forbiddenOrders_amount && k < temp.size(); k++)
             {
-                options = temp;
-                /* std::cout << "OPTIONS SIZE: " << options.size() << std::endl;
-                std::cout << "TEMP SIZE: " << temp.size() << std::endl; */
+                options.push_back(temp[k]);
             }
         }
 
